@@ -1,0 +1,3 @@
+mode,threads,brute_ms,lsh_ms,speedup_brute,speedup_lsh,recall
+queries,1,26446.750,2363.159,1.00,1.00,0.5064
+features,2,13071.869,253944.608,1.99,0.04,0.5064
