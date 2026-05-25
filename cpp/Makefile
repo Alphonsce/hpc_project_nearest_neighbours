@@ -1,10 +1,10 @@
 CXX      ?= g++
-CXXFLAGS ?= -std=c++17 -O3 -march=native -fopenmp -Wall -Wextra -Wno-unused-parameter
+CXXFLAGS ?= -std=c++17 -O3 -march=native -fopenmp -Wall -Wextra -Wno-unused-parameter -Wno-array-bounds
 LDFLAGS  ?= -fopenmp
 NVCC     ?= nvcc
 NVCCFLAGS?= -std=c++17 -O3 --extended-lambda -arch=sm_89
 
-all: lsh hnsw lsh_cuda hnsw_cuda
+all: lsh hnsw lsh_cuda hnsw_cuda kd_tree
 
 lsh: lsh.cpp
 	$(CXX) $(CXXFLAGS) $< -o $@ $(LDFLAGS)
@@ -19,9 +19,12 @@ hnsw_cuda: hnsw_cuda.cu
 	$(NVCC) $(NVCCFLAGS) -Xcompiler -fopenmp $< -o $@ -lgomp
 
 debug: CXXFLAGS = -std=c++17 -O0 -g -fopenmp -Wall -Wextra
-debug: lsh hnsw
+debug: lsh hnsw kd_tree
+
+kd_tree: kd_tree.cpp
+	$(CXX) $(CXXFLAGS) $< -o $@ $(LDFLAGS)
 
 clean:
-	rm -f lsh hnsw lsh_cuda hnsw_cuda
+	rm -f lsh hnsw lsh_cuda hnsw_cuda kd_tree
 
 .PHONY: all clean debug

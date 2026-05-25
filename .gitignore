@@ -20,3 +20,9 @@ data/glove*_*.shape
 data/glove*_*_words.txt
 data/glove*_*_meta.json
 data/nn_*.png
+
+#configs
+.claude/
+.cache/
+.vscode/
+cpp/kd_tree
