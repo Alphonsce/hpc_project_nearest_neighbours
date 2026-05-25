@@ -1,0 +1,4 @@
+method,threads,brute_ms,hnsw_ms,recall,build_ms
+cpu_build,8,5081.711,127.856,0.5166,-
+gpu_brute,-,101.019,-,1.0000,-
+gpu_hnsw,-,100.679,49.644,0.5048,743661.343

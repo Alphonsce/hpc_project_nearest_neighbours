@@ -1,0 +1,11 @@
+mode,ef,threads,hnsw_ms,recall
+queries,10,8,1.536,0.9274
+queries,20,8,2.239,0.9602
+queries,30,8,2.537,0.9682
+queries,50,8,4.313,0.9716
+queries,75,8,13.658,0.9726
+queries,100,8,6.378,0.9746
+queries,150,8,13.454,0.9806
+queries,200,8,11.180,0.9880
+queries,300,8,16.236,0.9886
+queries,500,8,26.013,0.9888

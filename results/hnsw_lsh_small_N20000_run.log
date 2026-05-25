@@ -1,0 +1,30 @@
+== LSH small CPU/GPU compare ==
+method           P    brute(ms)      lsh(ms)     recall  build(ms)
+cpu_queries      1       212.83        25.23     0.7654          -
+cpu_queries      8        41.43         4.01     0.7654          -
+gpu_brute        -         2.48            -     1.0000          -
+gpu_lsh          -         2.51         1.15     0.7654     52.397
+wrote results/cuda_compare_L32_K12.csv
+saved -> results/cuda_compare_L32_K12.png
+== HNSW small CPU/GPU compare ==
+method                 P    brute(ms)     hnsw(ms)     recall  build(ms)
+cpu_queries            1       206.35        22.65     0.9716          -
+cpu_queries            8        40.49         3.61     0.9716          -
+gpu_brute              -         2.29            -     1.0000          -
+gpu_hnsw               -         2.29         0.79     0.9716   3344.768
+wrote results/hnsw_cuda_compare_M16_ef50.csv
+saved -> results/hnsw_cuda_compare_M16_ef50.png
+== HNSW small ef sweep ==
+mode            ef   P     hnsw(ms)   recall
+queries         10   8         1.54   0.9274
+queries         20   8         2.24   0.9602
+queries         30   8         2.54   0.9682
+queries         50   8         4.31   0.9716
+queries         75   8        13.66   0.9726
+queries        100   8         6.38   0.9746
+queries        150   8        13.45   0.9806
+queries        200   8        11.18   0.9880
+queries        300   8        16.24   0.9886
+queries        500   8        26.01   0.9888
+wrote results/hnsw_ef_sweep_M16_P8.csv
+saved -> results/hnsw_ef_sweep_M16_P8.png

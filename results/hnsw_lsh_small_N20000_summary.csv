@@ -1,0 +1,11 @@
+method,threads,search_ms,recall,build_ms,notes
+cpu_brute,8,41.43,1.0000,-,DIM=50 N=20000 Q=500 from LSH benchmark binary
+cpu_lsh,1,25.23,0.7654,-,DIM=50 N=20000 Q=500 L=32 K=12
+cpu_lsh,8,4.01,0.7654,-,DIM=50 N=20000 Q=500 L=32 K=12
+gpu_lsh,-,1.15,0.7654,52.397,DIM=50 N=20000 Q=500 L=32 K=12
+cpu_hnsw,1,22.65,0.9716,-,DIM=50 N=20000 Q=500 M=16 ef=50
+cpu_hnsw,8,3.61,0.9716,-,DIM=50 N=20000 Q=500 M=16 ef=50
+gpu_hnsw,-,0.79,0.9716,3344.768,DIM=50 N=20000 Q=500 M=16 ef=50
+gpu_brute,-,2.48,1.0000,-,from LSH benchmark binary
+gpu_brute_lsh,-,2.48,1.0000,-,from LSH benchmark binary
+gpu_brute_hnsw,-,2.29,1.0000,-,from HNSW benchmark binary
