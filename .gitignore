@@ -4,3 +4,10 @@
 *.ptx
 *.cubin
 *.fatbin
+
+.claude/
+.vscode/
+.cache/
+.venv/
+build/
+data/glove*
