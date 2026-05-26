@@ -1,0 +1,4 @@
+method,dim,n,brute_ms,kd_ms,recall,build_ms,speedup_vs_brute
+gpu_brute,50,20000,27.294,-,1.0000,-,1.00
+gpu_kd,50,20000,27.294,53.245,1.0000,4.679,0.51
+cpu_serial_P8,50,20000,1.370,1.584,-,5.608,17.23

@@ -1,0 +1,6 @@
+loaded n=20000 d=50
+N=20000 D=50  k=10 queries=500
+brute  : 27.329 ms  (54.7 us/query)
+build  : 5.036 ms
+query  : 53.081 ms  (106.2 us/query)  speedup x0.51
+recall@10 : 1.0000

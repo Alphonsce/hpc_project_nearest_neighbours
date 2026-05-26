@@ -1,0 +1,10 @@
+
+=== D=50  N=20000  k=10  queries=500 ===
+method                  brute(ms)     kd(ms)     recall  build(ms)    speedup
+gpu_brute                  27.294          -     1.0000          -      1.00x
+gpu_kd                     27.294     53.245     1.0000      4.679      0.51x
+cpu_serial_P8               1.370      1.584          -      5.608     17.23x
+wrote results/kdtree_cuda_D50_N20000.csv
+
+wrote results/kdtree_cuda_summary.csv
+saved -> results/kdtree_cuda.png

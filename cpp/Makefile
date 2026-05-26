@@ -2,10 +2,8 @@ CXX      ?= g++
 CXXFLAGS ?= -std=c++17 -O3 -march=native -fopenmp -Wall -Wextra -Wno-unused-parameter -Wno-array-bounds
 LDFLAGS  ?= -fopenmp
 NVCC     ?= nvcc
-# Auto-detect GPU arch; fall back to sm_75 (T4/V100) if nvcc unavailable
-CUDA_ARCH?= $(shell $(NVCC) --run "int main(){}" 2>/dev/null && \
-              nvidia-smi --query-gpu=compute_cap --format=csv,noheader 2>/dev/null | \
-              head -1 | tr -d '.' | awk '{print "sm_"$$1}' || echo sm_75)
+# Auto-detect GPU arch from the active NVIDIA device; fall back to sm_75.
+CUDA_ARCH?= $(shell arch=$$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader 2>/dev/null | awk 'NR==1 {gsub(/\./,""); print "sm_"$$1}'); if [ -n "$$arch" ]; then echo "$$arch"; else echo sm_75; fi)
 NVCCFLAGS?= -std=c++17 -O3 --extended-lambda -arch=$(CUDA_ARCH)
 
 all: lsh hnsw lsh_cuda hnsw_cuda kd_tree kd_tree_cuda

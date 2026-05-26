@@ -1,0 +1,25 @@
+=== build scaling D=10 N=1000000 ===
+build_mode         P    build(ms)   speedup
+serial             1      459.136      1.00
+serial             2      456.978      1.00
+serial             4      456.128      1.01
+serial             8      458.370      1.00
+parallel-flat      1      455.968      1.00
+parallel-flat      2      355.316      1.28
+parallel-flat      4      238.135      1.91
+parallel-flat      8      175.044      2.60
+=== query scaling D=10 N=1000000 ===
+query_mode         P    brute(ms)    query(ms)     us/query  S_thread   S_brute
+serial             1     2485.266      162.247        324.5      1.00     15.32
+serial             2     1369.605       83.359        166.7      1.95     16.43
+serial             4      973.463       40.884         81.8      3.97     23.81
+serial             8      892.189       30.182         60.4      5.38     29.56
+local-heaps        1     2463.673      163.059        326.1      1.00     15.11
+local-heaps        2     1374.578    11750.228      23500.5      0.01      0.12
+local-heaps        4      956.483     9941.796      19883.6      0.02      0.10
+local-heaps        8      870.134     8892.249      17784.5      0.02      0.10
+atomic-global      1     2463.544      185.085        370.2      1.00     13.31
+atomic-global      2     1373.767      181.353        362.7      1.02      7.58
+atomic-global      4      925.450      181.293        362.6      1.02      5.10
+atomic-global      8      939.862      243.696        487.4      0.76      3.86
+saved -> results/kdtree_D10_N1000000.png

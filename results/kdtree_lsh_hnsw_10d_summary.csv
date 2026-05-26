@@ -1,0 +1,5 @@
+dataset,method,threads,search_ms,recall,build_ms,notes
+Synthetic N=1M D=10,brute,8,892.189,1.0000,-,KD-tree brute-force baseline; Q=500
+Synthetic N=1M D=10,lsh,8,523.572,0.9998,2876,L=32 K=12; Q=500
+Synthetic N=1M D=10,hnsw,8,35.933,0.5858,32160,M=16 ef_construction=200 ef=50; Q=500
+Synthetic N=1M D=10,kd_tree,8,30.182,1.0000,175.044,parallel-flat build and serial query mode; Q=500; nodes_mean=3071

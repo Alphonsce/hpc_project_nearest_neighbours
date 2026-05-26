@@ -1,0 +1,9 @@
+build_mode,threads,build_ms,speedup
+serial,1,481.396,1.00
+serial,2,481.664,1.00
+serial,4,481.724,1.00
+serial,8,478.094,1.01
+parallel-flat,1,476.633,1.00
+parallel-flat,2,276.721,1.72
+parallel-flat,4,194.531,2.45
+parallel-flat,8,195.443,2.44

@@ -1,0 +1,20 @@
+=== build scaling  D=100 N=1000000 ===
+build_mode         P    build(ms)   speedup
+serial             1      481.396      1.00
+serial             2      481.664      1.00
+serial             4      481.724      1.00
+serial             8      478.094      1.01
+parallel-flat      1      476.633      1.00
+parallel-flat      2      276.721      1.72
+parallel-flat      4      194.531      2.45
+parallel-flat      8      195.443      2.44
+wrote results/kdtree_build_D100_N1000000.csv
+
+=== query scaling  D=100 N=1000000 ===
+query_mode         P    brute(ms)    query(ms)     us/query  S_thread   S_brute
+serial             1    26354.827   161839.908     323679.8      1.00      0.16
+serial             2    13247.892    84054.400     168108.8      1.93      0.16
+serial             4     6835.599    42693.248      85386.5      3.79      0.16
+serial             8     5241.645    26423.070      52846.1      6.12      0.20
+wrote results/kdtree_query_D100_N1000000.csv
+saved -> results/kdtree_D100_N1000000.png
