@@ -26,3 +26,4 @@ data/nn_*.png
 .cache/
 .vscode/
 cpp/kd_tree
+experiments.ipynb
