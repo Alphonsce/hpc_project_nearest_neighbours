@@ -75,8 +75,8 @@ for DIM in $DIMS; do
     gpu_recall=$(parse_recall "$gout")
     gpu_sp=$(parse_speedup    "$gout")
 
-    printf "%-22s %10.3f %10.3f %10.4f %10.3f %10s\n" \
-        "gpu_brute"  "$gpu_brute" "-"      "1.0000"     "-"         "1.00"
+    printf "%-22s %10.3f %10s %10s %10s %10s\n" \
+        "gpu_brute"  "$gpu_brute" "-"       "1.0000"      "-"          "1.00x"
     printf "%-22s %10.3f %10.3f %10.4f %10.3f %10s\n" \
         "gpu_kd"     "$gpu_brute" "$gpu_kd" "$gpu_recall" "$gpu_build" "${gpu_sp}x"
 
