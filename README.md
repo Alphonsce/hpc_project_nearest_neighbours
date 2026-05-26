@@ -1,7 +1,7 @@
 # hpc_project_nearest_neighbours
 
 Speeding up cosine-similarity nearest-neighbour search on CPU (OpenMP) and GPU
-(CUDA), benchmarked on GloVe word embeddings.
+(CUDA), benchmarked on GloVe word embeddings
 
 ## What's implemented
 

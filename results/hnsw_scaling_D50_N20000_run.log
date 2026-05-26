@@ -1,0 +1,15 @@
+mode           P    brute(ms)     hnsw(ms)   S_brute   S_hnsw   recall
+queries        1       205.72        20.45      1.00     1.00   0.9716
+queries        2       102.70        10.66      2.00     1.92   0.9716
+queries        4        51.55         5.70      3.99     3.59   0.9716
+queries        8        41.23         3.64      4.99     5.62   0.9716
+neighbors      1       204.45        32.24      1.00     1.00   0.9716
+neighbors      2       102.55        36.04      1.99     0.89   0.9716
+neighbors      4        51.17        35.60      4.00     0.91   0.9716
+neighbors      8        40.63        45.25      5.03     0.71   0.9716
+features       1       203.28       127.32      1.00     1.00   0.9716
+features       2       102.62       200.78      1.98     0.63   0.9716
+features       4        52.02       239.82      3.91     0.53   0.9716
+features       8        41.21       365.48      4.93     0.35   0.9716
+wrote results/hnsw_scaling_M16_ef50.csv
+saved -> results/hnsw_scaling_M16_ef50.png

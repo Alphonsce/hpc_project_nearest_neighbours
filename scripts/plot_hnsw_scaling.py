@@ -23,63 +23,59 @@ def main() -> None:
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
-    # rows_by_mode[mode] = [(threads, speedup_hnsw, hnsw_ms, recall), ...]
-    rows_by_mode: dict[str, list[tuple[int, float, float, float]]] = defaultdict(list)
+    # rows_by_mode[mode] = [(threads, brute_ms, hnsw_ms), ...]
+    rows_by_mode: dict[str, list[tuple[int, float, float]]] = defaultdict(list)
     with open(args.csv) as fh:
         for r in csv.DictReader(fh):
             rows_by_mode[r["mode"]].append((
                 int(r["threads"]),
-                float(r["speedup_hnsw"]),
+                float(r["brute_ms"]),
                 float(r["hnsw_ms"]),
-                float(r["recall"]),
             ))
     for v in rows_by_mode.values():
         v.sort()
 
     all_ps = sorted({p for v in rows_by_mode.values() for p, *_ in v})
 
-    fig, axes = plt.subplots(1, 3, figsize=(18, 5))
-    ax_s, ax_t, ax_r = axes
+    fig, (ax_s, ax_t) = plt.subplots(1, 2, figsize=(14, 5))
+
+    # Brute-force is identical for all modes up to timing noise; use first mode.
+    first_rows = next(iter(rows_by_mode.values()))
+    brute_ps = [r[0] for r in first_rows]
+    brute_ms = [r[1] for r in first_rows]
+    brute_base = brute_ms[0]
+    brute_speedups = [brute_base / t for t in brute_ms]
 
     # ---- left: speedup curves ----
     ax_s.plot(all_ps, all_ps, "k--", alpha=0.5, label="ideal")
+    ax_s.plot(brute_ps, brute_speedups, "o-", label="brute force")
     for m, rows in rows_by_mode.items():
         ps = [r[0] for r in rows]
-        ss = [r[1] for r in rows]
-        ax_s.plot(ps, ss, "o-", label=m)
+        ts = [r[2] for r in rows]
+        base = ts[0]
+        ax_s.plot(ps, [base / t for t in ts], "o-", label=f"HNSW: {m}")
     ax_s.set_xlabel("OpenMP threads")
     ax_s.set_ylabel("speedup  T(1) / T(P)")
     ax_s.set_xticks(all_ps)
     ax_s.grid(True, alpha=0.3)
     ax_s.legend(fontsize=11)
-    ax_s.set_title("HNSW strong scaling — speedup by mode")
+    ax_s.set_title("Speedup")
 
-    # ---- middle: wall-time curves (log scale) ----
+    # ---- right: wall-time curves (log scale) ----
+    ax_t.plot(brute_ps, brute_ms, "o-", label="brute force")
     for m, rows in rows_by_mode.items():
         ps = [r[0] for r in rows]
         ts = [r[2] for r in rows]
-        ax_t.plot(ps, ts, "o-", label=m)
+        ax_t.plot(ps, ts, "o-", label=f"HNSW: {m}")
     ax_t.set_xlabel("OpenMP threads")
-    ax_t.set_ylabel("HNSW wall time (ms)")
+    ax_t.set_ylabel("wall time (ms)")
     ax_t.set_xticks(all_ps)
     ax_t.set_yscale("log")
     ax_t.grid(True, which="both", alpha=0.3)
     ax_t.legend(fontsize=11)
-    ax_t.set_title("HNSW wall time by mode (log)")
+    ax_t.set_title("Wall time")
 
-    # ---- right: recall@k per mode (should stay roughly constant) ----
-    for m, rows in rows_by_mode.items():
-        ps = [r[0] for r in rows]
-        rs = [r[3] for r in rows]
-        ax_r.plot(ps, rs, "o-", label=m)
-    ax_r.set_xlabel("OpenMP threads")
-    ax_r.set_ylabel("recall@k")
-    ax_r.set_xticks(all_ps)
-    ax_r.set_ylim(0, 1.05)
-    ax_r.grid(True, alpha=0.3)
-    ax_r.legend(fontsize=11)
-    ax_r.set_title("Recall@k by mode (should be stable)")
-
+    fig.suptitle("HNSW Parallelism Methods (M=16, ef=50)", fontsize=14)
     fig.tight_layout()
     out = Path(args.out) if args.out else Path(args.csv).with_suffix(".png")
     fig.savefig(out, dpi=140)

@@ -30,7 +30,7 @@ EF=${EF:-50}
 CPU_MODE=${CPU_MODE:-queries}
 CPU_THREADS=${CPU_THREADS:-"1 8"}
 
-source .venv/bin/activate
+source .venv/bin/activate 2>/dev/null || true
 
 BASE="data/glove${DIM}_${N}"
 [[ -f "${BASE}_norm.npy" ]] || python scripts/prepare_glove.py --source "$SOURCE" --dim "$DIM" --n "$N"
