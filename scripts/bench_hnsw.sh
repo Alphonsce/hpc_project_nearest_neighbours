@@ -32,7 +32,7 @@ EF=${EF:-50}
 THREADS=${THREADS:-"1 2 4 8"}
 MODES=${MODES:-"serial queries queries_dyn neighbors features build"}
 
-source .venv/bin/activate
+source .venv/bin/activate 2>/dev/null || true
 
 BASE="data/glove${DIM}_${N}"
 [[ -f "${BASE}_norm.npy" ]] || python scripts/prepare_glove.py --source "$SOURCE" --dim "$DIM" --n "$N"
