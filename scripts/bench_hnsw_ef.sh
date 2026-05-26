@@ -30,7 +30,7 @@ EF_VALS=${EF_VALS:-"10 20 30 50 75 100 150 200 300 500"}
 THREADS=${THREADS:-4}
 MODES=${MODES:-"serial queries build"}
 
-source .venv/bin/activate
+source .venv/bin/activate 2>/dev/null || true
 
 BASE="data/glove${DIM}_${N}"
 [[ -f "${BASE}_norm.npy" ]] || python scripts/prepare_glove.py --source "$SOURCE" --dim "$DIM" --n "$N"
