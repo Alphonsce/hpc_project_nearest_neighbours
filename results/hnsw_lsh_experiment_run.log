@@ -1,0 +1,2 @@
+== LSH CPU/GPU compare ==
+method           P    brute(ms)      lsh(ms)     recall  build(ms)

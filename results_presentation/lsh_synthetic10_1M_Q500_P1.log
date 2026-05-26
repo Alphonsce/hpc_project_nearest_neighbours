@@ -1,0 +1,6 @@
+loaded n=1000000 d=10
+build  L=32 K=12  6.225s
+mode=queries  threads=1  N=1000000 D=10  L=32 K=12 topk=10 queries=500
+brute     : 2204.561 ms  (4409.1 us/query)
+lsh       : 869.770 ms  (1739.5 us/query)  speedup x2.53
+recall@10  : 0.9998   avg_candidates=50584.7

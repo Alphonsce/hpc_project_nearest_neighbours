@@ -1,0 +1,5 @@
+loaded n=1000000 d=100
+build_mode=parallel-flat  query_mode=serial  threads=8  N=1000000 D=100  k=10 iters=500
+brute  : 5142.277 ms  (10284.6 us/query)
+build  : 175.513 ms
+query  : 26255.870 ms  (52511.7 us/query)  nodes_mean=998996  speedup x0.20

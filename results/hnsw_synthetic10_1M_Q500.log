@@ -1,0 +1,7 @@
+loaded n=1000000 d=10
+build  M=16 ef_construction=200 (parallel)  32.160s
+brute-force gt: 0.555 s
+mode=build  threads=8  N=1000000 D=10  M=16 ef_construction=200 ef=50 topk=10 queries=500
+brute     : 552.168 ms  (1104.3 us/query)
+hnsw      : 35.933 ms  (71.9 us/query)  speedup x15.37
+recall@10  : 0.5858

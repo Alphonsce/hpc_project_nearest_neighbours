@@ -1,0 +1,7 @@
+loaded n=200000 d=10
+cpu build  M=16 ef=200  15.934s
+mode=cuda_hnsw  N=200000 D=10  M=16 ef_construction=200 ef=50 topk=10 queries=500
+brute     : 2.329 ms  (4.7 us/query)
+build     : 15951.219 ms
+hnsw      : 0.385 ms  (0.8 us/query)  speedup x6.04
+recall@10  : 0.6102

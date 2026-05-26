@@ -1,0 +1,10 @@
+dataset,dim,n,method,query_ms,recall,build_ms,notes
+Synthetic N=1M D=10,10,1000000,gpu_brute,334.247,1.0000,-,CUDA brute baseline Q=500
+Synthetic N=1M D=10,10,1000000,gpu_kd_tree,6.065,1.0000,334.360,CUDA KD-tree Q=500
+Synthetic N=1M D=10,10,1000000,cpu_kd_tree,30.182,1.0000,175.044,CPU KD-tree 8 threads Q=500
+GloVe N=20k D=50,50,20000,gpu_brute,27.329,1.0000,-,CUDA brute baseline Q=500
+GloVe N=20k D=50,50,20000,gpu_kd_tree,53.081,1.0000,5.036,CUDA KD-tree Q=500
+GloVe N=20k D=50,50,20000,cpu_kd_tree,96.006,1.0000,2.325,CPU KD-tree 8 threads Q=500
+GloVe N=1M D=100,100,1000000,gpu_brute,3901.696,1.0000,-,CUDA brute baseline Q=500
+GloVe N=1M D=100,100,1000000,gpu_kd_tree,8507.887,1.0000,370.071,CUDA KD-tree Q=500
+GloVe N=1M D=100,100,1000000,cpu_kd_tree,26423.070,1.0000,195.443,CPU KD-tree 8 threads Q=500

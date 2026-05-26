@@ -1,0 +1,9 @@
+dataset,method,threads,search_ms,recall,build_ms,notes
+N=20k D=50,brute,8,41.43,1.0000,-,from LSH benchmark binary
+N=20k D=50,lsh,8,4.01,0.7654,-,L=32 K=12
+N=20k D=50,hnsw,8,3.61,0.9716,-,M=16 ef=50
+N=20k D=50,kd_tree,8,96.006,1.0000,2.325,parallel-flat build and serial query mode
+N=1M D=100,brute,8,5103.51,1.0000,-,from LSH benchmark binary
+N=1M D=100,lsh,8,503.57,0.5064,-,L=32 K=12
+N=1M D=100,hnsw,8,127.86,0.5166,-,M=16 ef=50
+N=1M D=100,kd_tree,8,26423.070,1.0000,195.443,parallel-flat build and serial query mode

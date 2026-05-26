@@ -1,0 +1,13 @@
+build_mode,threads,build_ms,speedup
+serial,1,5.354,1.00
+serial,2,5.815,0.92
+serial,4,5.337,1.00
+serial,8,5.568,0.96
+parallel-tasks,1,5.355,1.00
+parallel-tasks,2,12.194,0.44
+parallel-tasks,4,19.941,0.27
+parallel-tasks,8,30.982,0.17
+parallel-flat,1,5.346,1.00
+parallel-flat,2,3.110,1.72
+parallel-flat,4,2.061,2.59
+parallel-flat,8,2.325,2.30
